@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Pages/ProductsPage.dart';
 import 'package:flutter_project1/Pages/PromotionsPage.dart';
@@ -12,7 +11,6 @@ class Bones extends StatefulWidget {
 }
 
 class _BonesState extends State<Bones> {
-  
   int _selectedIndex=1;
   static const List<Widget> _pages = [
     ShoppingListPage(),
@@ -22,6 +20,13 @@ class _BonesState extends State<Bones> {
 
   void onSelectedTab(int index){
     if(_selectedIndex==index) return;
+    // _selectedIndex=index;
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context){
+    //       return _pages[_selectedIndex];
+    //     })
+    //   );
     setState(() {
        _selectedIndex=index;
     });

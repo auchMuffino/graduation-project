@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583814684655",
+    "project_id": "smartcatalog-b5270",
+    "storage_bucket": "smartcatalog-b5270.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583814684655:android:b91aec8ff5c365f52aa01a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_project1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583814684655-71rajhrf61s8ffk8pjen935ofmu6t1mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQUEFQtx480-qACKVb1aeK84aX-vdmYMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583814684655-71rajhrf61s8ffk8pjen935ofmu6t1mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

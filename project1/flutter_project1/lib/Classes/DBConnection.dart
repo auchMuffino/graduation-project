@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_project1/Classes/Category.dart';
 import 'package:flutter_project1/Classes/ChainStore.dart';
+import 'package:flutter_project1/Classes/Price.dart';
 import 'package:flutter_project1/Classes/Product.dart';
 import 'package:flutter_project1/Classes/Promotion.dart';
 
@@ -13,8 +14,21 @@ class DBConnection {
   static var categories=<Category>{};
   static var promotions=<Promotion>{};
   static var stores=<ChainStore>{};
+  static var prices=<Price>{};
   static bool Return = false;
 
+  static Future<void> getStores() async{
+    FirebaseFirestore.instance.collection('chainsOfStore').get().then(
+      (querySnapshot) {
+        for (var docSnapshot in querySnapshot.docs) {
+          ChainStore instance = ChainStore.fromFirestore(docSnapshot);
+          stores.add(instance);
+          print(instance.title);
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+  }
   static void getProducts(){
     FirebaseFirestore.instance.collection('products').get().then(
       (querySnapshot){
@@ -52,23 +66,23 @@ class DBConnection {
       onError: (e) => print("Error completing: $e"),
     );
   }
+  static void getPrices(){
+     FirebaseFirestore.instance.collection('prices').get().then(
+      (querySnapshot){
+        for (var docSnapshot in querySnapshot.docs) {
+          Price instance = Price.fromFirestore(docSnapshot);
+          prices.add(instance);
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+  }
   static void getPromotions(){
     FirebaseFirestore.instance.collection('promotions').get().then(
       (querySnapshot){
         for (var docSnapshot in querySnapshot.docs) {
           Promotion instance = Promotion.fromFirestore(docSnapshot);
           promotions.add(instance);
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
-  }
-  static void getStores(){
-    FirebaseFirestore.instance.collection('chainsOfStore').get().then(
-      (querySnapshot) {
-        for (var docSnapshot in querySnapshot.docs) {
-          ChainStore instance = ChainStore.fromFirestore(docSnapshot);
-          stores.add(instance);
         }
       },
       onError: (e) => print("Error completing: $e"),

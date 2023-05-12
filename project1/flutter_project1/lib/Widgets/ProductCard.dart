@@ -3,7 +3,6 @@ import 'package:flutter_project1/Classes/ListContent.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/ProductCount.dart';
-// import '../Classes/Products.dart';
 import '../Classes/Product.dart';
 import 'Buttons.dart';
 
@@ -33,6 +32,7 @@ class _ProductCardState extends State<ProductCard> {
               height: 40,
             ),
             Text(widget.curentProduct.title),
+            Text(widget.curentProduct.category.title),
             Buttons(),
           ]),
         ),

@@ -14,12 +14,14 @@ void main() async {
           projectId: 'smartcatalog-b5270',
           storageBucket: 'smartcatalog-b5270.appspot.com'
           ));
-  DBConnection.getCategories();
-  DBConnection.getProducts();
-  DBConnection.getStores();
-  DBConnection.getPromotions();
+  await init();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Login(),
   ));
+}
+  Future<void> init() async{
+  DBConnection.getStores();
+  DBConnection.getCategories();
+  DBConnection.getProducts();
 }

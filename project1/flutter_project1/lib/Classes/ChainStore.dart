@@ -8,6 +8,7 @@ class ChainStore{
   factory ChainStore.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
   ) {
+    print("РУРУРУР");
     final data = snapshot.data();
     return ChainStore(
       UNP: data?['UNP'],

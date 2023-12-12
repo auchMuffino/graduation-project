@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_project1/Classes/Category.dart';
 import 'package:flutter_project1/Classes/DBConnection.dart';
-import 'package:flutter_project1/Classes/Getter.dart';
 
 class Product{
   late String _ID;
   late String picturePath;
   late String title;
-  late Category category;
+  late String category;
   late String description;
   late String manufacturer;
   late String countryOfOrigin;
@@ -23,7 +21,7 @@ class Product{
       manufacturer: data?['manufacturer'],
       countryOfOrigin: data?['countryOfOrigin'],
       picturePath: data?['imagePath'],
-      category: Getter.getCategoryByID(data?['category'])!,
+      category: data?['category'],
     );
   }
   Map<String, dynamic> toFirestore() {
@@ -33,13 +31,17 @@ class Product{
       if (manufacturer != null) "manufacturer": manufacturer,
       if (countryOfOrigin != null) "countryOfOrigin": countryOfOrigin,
       if (picturePath != null) "imagePath": picturePath,
-      if (category != null) "category": category.getID(),
+      if (category != null) "category": category,
     };
   }
   void setID(String _ID){
     this._ID=_ID;
   }
   String getID(){
+    return this._ID;
+  }
+  @override
+  String toString(){
     return this._ID;
   }
 }

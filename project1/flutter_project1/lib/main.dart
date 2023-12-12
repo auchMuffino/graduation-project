@@ -1,27 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';   
 import 'package:flutter_project1/Classes/DBConnection.dart';
-import 'package:flutter_project1/Pages/LoginPage.dart';
-import 'package:flutter_project1/Widgets/MainStructElement.dart';
+import 'package:flutter_project1/Classes/firebase_streem.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: 'AIzaSyCQUEFQtx480-qACKVb1aeK84aX-vdmYMM',
-          appId: '1:583814684655:android:b91aec8ff5c365f52aa01a',
-          messagingSenderId: '583814684655',
-          projectId: 'smartcatalog-b5270',
-          storageBucket: 'smartcatalog-b5270.appspot.com'
-          ));
-  await init();
-  runApp(const MaterialApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+  init();
+  runApp(MaterialApp(
+    theme: ThemeData(
+      primaryColor: Color(0xFF4EC88C),
+    ),
     debugShowCheckedModeBanner: false,
-    home: Login(),
+    home: FirebaseStream(),
   ));
+  
 }
-  Future<void> init() async{
-  DBConnection.getStores();
+  void init(){
   DBConnection.getCategories();
+  DBConnection.getStores();
   DBConnection.getProducts();
+  DBConnection.getPromotions(); 
+  DBConnection.getPrices();
 }
